@@ -1,7 +1,8 @@
 import 'package:flutter_application_1/models/category.dart';
 import 'package:flutter_application_1/models/product.dart';
 import 'package:flutter_application_1/models/user.dart';
-import'package:flutter_application_1/models/search.dart';
+import 'package:flutter_application_1/models/search.dart';
+
 List<Category> mockCategories = [
   Category(name: 'Electronics', imageUrl: 'lib/assets/images/image.png'),
   Category(name: 'Clothing', imageUrl: 'lib/assets/images/image.png'),
@@ -23,6 +24,7 @@ List<Product> mockProducts = [
     imageUrl: 'lib/assets/images/image.png',
     isFavorite: true,
     rate: 4.5,
+    reviews: 'hot sale',
   ),
   Product(
     id: '2',
@@ -31,6 +33,7 @@ List<Product> mockProducts = [
     imageUrl: 'lib/assets/images/image.png',
     isFavorite: false,
     rate: 4.5,
+    reviews: 'new arrival',
   ),
   Product(
     id: '3',
@@ -38,6 +41,7 @@ List<Product> mockProducts = [
     price: 14.99,
     imageUrl: 'lib/assets/images/image.png',
     rate: 4.5,
+    reviews: 'bestseller',
   ),
   Product(
     id: '5',
@@ -45,6 +49,7 @@ List<Product> mockProducts = [
     price: 49.99,
     imageUrl: 'lib/assets/images/image.png',
     rate: 4.5,
+    reviews: 'limited edition',
   ),
   Product(
     id: '4',
@@ -52,6 +57,7 @@ List<Product> mockProducts = [
     price: 149.99,
     imageUrl: 'lib/assets/images/image.png',
     rate: 4.5,
+    reviews: 'comfortable',
   ),
   Product(
     id: '6',
@@ -59,6 +65,7 @@ List<Product> mockProducts = [
     price: 699.99,
     imageUrl: 'lib/assets/images/image.png',
     rate: 4.5,
+    reviews: 'latest model',
   ),
   Product(
     id: '7',
@@ -66,6 +73,7 @@ List<Product> mockProducts = [
     price: 699.99,
     imageUrl: 'lib/assets/images/image.png',
     rate: 4.5,
+    reviews: 'latest model',
   ),
 ];
 

@@ -26,7 +26,10 @@ class _PaymentState extends State<Payment> {
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color.fromARGB(255, 203, 226, 244), Color.fromARGB(255, 255, 255, 255)],
+            colors: [
+              Color.fromARGB(255, 203, 226, 244),
+              Color.fromARGB(255, 255, 255, 255),
+            ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -77,7 +80,6 @@ class _PaymentState extends State<Payment> {
                         children: [
                           Expanded(
                             child: TextFormField(
-                             
                               controller: _expiryDateController,
                               decoration: InputDecoration(
                                 labelText: 'Expiry Date',
@@ -121,13 +123,13 @@ class _PaymentState extends State<Payment> {
                       ElevatedButton(
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                            
                             showDialog(
                               context: context,
                               builder: (context) => AlertDialog(
                                 title: const Text('Payment Successful'),
                                 content: const Text(
-                                    'Your payment has been processed.'),
+                                  'Your payment has been processed.',
+                                ),
                                 actions: [
                                   TextButton(
                                     onPressed: () =>
@@ -149,7 +151,8 @@ class _PaymentState extends State<Payment> {
                               builder: (context) => AlertDialog(
                                 title: const Text('Error'),
                                 content: const Text(
-                                    'Please enter valid payment details.'),
+                                  'Please enter valid payment details.',
+                                ),
                                 actions: [
                                   TextButton(
                                     onPressed: () =>
@@ -163,7 +166,9 @@ class _PaymentState extends State<Payment> {
                         },
                         style: ElevatedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 48, vertical: 16),
+                            horizontal: 48,
+                            vertical: 16,
+                          ),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.0),
                           ),

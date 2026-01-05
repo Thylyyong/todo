@@ -7,19 +7,25 @@ class CartProvider with ChangeNotifier {
 
   List<String> get cartItemIds => _cartItemIds;
 
-  List<Product> get cartItems => _cartItemIds.map((id) => mockProducts.firstWhere((p) => p.id == id)).toList();
+  List<Product> get cartItems => _cartItemIds
+      .map((id) => mockProducts.firstWhere((p) => p.id == id))
+      .toList();
 
   void addToCart(Product product) {
     _cartItemIds.add(product.id);
     notifyListeners();
   }
+  
 
   void removeFromCart(Product product) {
     _cartItemIds.remove(product.id);
     notifyListeners();
   }
 
-  double get totalPrice => _cartItemIds.fold(0, (sum, id) => sum + (mockProducts.firstWhere((p) => p.id == id).price));
+  double get totalPrice => _cartItemIds.fold(
+    0,
+    (sum, id) => sum + (mockProducts.firstWhere((p) => p.id == id).price),
+  );
 
   void clearCart() {
     _cartItemIds.clear();

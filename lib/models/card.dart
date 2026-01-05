@@ -1,5 +1,4 @@
 class Card {
-
   final String title;
   final String description;
   final String imageUrl;
@@ -17,10 +16,6 @@ class Card {
     );
   }
   Map<String, dynamic> toJson() {
-    return {
-      'title': title,
-      'description': description,
-      'imageUrl': imageUrl,
-    };
+    return {'title': title, 'description': description, 'imageUrl': imageUrl};
   }
 }

@@ -3,7 +3,11 @@ class PayMentProvider {
   String? cvv;
   String? expiryDate;
 
-  PayMentProvider({required this.cardNumber, required this.cvv, required this.expiryDate});
+  PayMentProvider({
+    required this.cardNumber,
+    required this.cvv,
+    required this.expiryDate,
+  });
 
   factory PayMentProvider.fromJson(Map<String, dynamic> json) {
     return PayMentProvider(
@@ -13,10 +17,6 @@ class PayMentProvider {
     );
   }
   Map<String, dynamic> toJson() {
-    return {
-      'cardNumber': cardNumber,
-      'cvv': cvv,
-      'expiryDate': expiryDate,
-    };
+    return {'cardNumber': cardNumber, 'cvv': cvv, 'expiryDate': expiryDate};
   }
 }

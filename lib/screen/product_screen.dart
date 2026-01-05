@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_application_1/provider/product_provider.dart';
-import 'package:flutter_application_1/widget/product_card.dart';
+import 'package:flutter_application_1/widgets/product_card.dart';
+import 'package:flutter_application_1/screen/product_detail.dart';
 
 class ProductScreen extends StatelessWidget {
   const ProductScreen({super.key});
@@ -14,10 +15,7 @@ class ProductScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 221, 169, 214),
       appBar: AppBar(
-        title: Text(
-          'Products',
-          style: TextStyle(fontSize: screenWidth * 0.05),
-        ),
+        title: Text('Products', style: TextStyle(fontSize: screenWidth * 0.05)),
         backgroundColor: Colors.blue,
         elevation: 0,
       ),
@@ -57,8 +55,7 @@ class ProductScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Container(
                   decoration: BoxDecoration(
-                    borderRadius:
-                        BorderRadius.circular(screenWidth * 0.0375),
+                    borderRadius: BorderRadius.circular(screenWidth * 0.0375),
                     gradient: const LinearGradient(
                       colors: [
                         Color.fromARGB(255, 203, 226, 244),
@@ -77,6 +74,14 @@ class ProductScreen extends StatelessWidget {
                   ),
                   child: ProductCard(
                     product: productProvider.products[index],
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ProductDetailScreen(
+                          product: productProvider.products[index],
+                        ),
+                      ),
+                    ), isFavorite: true,
                   ),
                 );
               },

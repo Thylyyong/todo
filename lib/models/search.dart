@@ -19,7 +19,7 @@ class Search {
     );
   }
 
-  List<Search> fromJsonList(List<dynamic> jsonList) {
+  static List<Search> fromJsonList(List<dynamic> jsonList) {
     return jsonList.map((json) => Search.fromJson(json)).toList();
   }
-} 
+}

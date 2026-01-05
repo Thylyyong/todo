@@ -1,4 +1,3 @@
-
 class Product {
   final String id;
   final String title;
@@ -6,6 +5,7 @@ class Product {
   final String imageUrl;
   final bool isFavorite;
   final double rate;
+  final String reviews;
 
   Product({
     required this.id,
@@ -14,6 +14,7 @@ class Product {
     required this.imageUrl,
     this.isFavorite = false,
     required this.rate,
+    this.reviews = '',
   });
 
   factory Product.fromJson(Map<String, dynamic> json) {
@@ -24,6 +25,7 @@ class Product {
       imageUrl: json['imageUrl'],
       isFavorite: json['isFavorite'],
       rate: json['rate'],
+      reviews: json['reviews'] ?? '',
     );
   }
 
@@ -35,6 +37,7 @@ class Product {
       'imageUrl': imageUrl,
       'isFavorite': isFavorite,
       'rate': rate,
+      'reviews': reviews,
     };
   }
 

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/provider/favorite_provider.dart';
 import 'package:flutter_application_1/provider/product_provider.dart';
-import 'package:flutter_application_1/widget/product_card.dart';
+import 'package:flutter_application_1/screen/product_detail.dart';
+import 'package:flutter_application_1/widgets/product_card.dart';
 import 'package:provider/provider.dart';
 
 class Favorite extends StatelessWidget {
@@ -12,17 +13,27 @@ class Favorite extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Favorite Products', style: TextStyle(fontSize: screenWidth * 0.05)),
-        backgroundColor: Colors.blue,
+        title: Text(
+          'Favorite Products',
+          style: TextStyle(fontSize: screenWidth * 0.05),
+        ),
+        backgroundColor: const Color.fromARGB(255, 11, 40, 65),
       ),
       body: Consumer2<FavoriteProvider, ProductProvider>(
         builder: (context, favoriteProvider, productProvider, child) {
-          final favoriteProducts = favoriteProvider.favoriteIds.map((id) => productProvider.products.firstWhere((p) => p.id == id)).toList();
+          final favoriteProducts = favoriteProvider.favoriteIds
+              .map(
+                (id) => productProvider.products.firstWhere((p) => p.id == id),
+              )
+              .toList();
           if (favoriteProducts.isEmpty) {
             return Center(
               child: Text(
                 'No favorites yet!',
-                style: TextStyle(fontSize: screenWidth * 0.045, color: Colors.grey),
+                style: TextStyle(
+                  fontSize: screenWidth * 0.045,
+                  color: Colors.grey,
+                ),
               ),
             );
           }
@@ -55,7 +66,16 @@ class Favorite extends StatelessWidget {
                   itemCount: favoriteProducts.length,
                   itemBuilder: (context, index) {
                     final product = favoriteProducts[index];
-                    return ProductCard(product: product);
+                    return ProductCard(
+                      product: product,
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProductDetailScreen(product: product),
+                        ),
+                      ),
+                      isFavorite: true,
+                    );
                   },
                 );
               },

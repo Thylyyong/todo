@@ -4,21 +4,26 @@ import 'package:flutter_application_1/widgets/profile_header.dart';
 import 'package:flutter_application_1/widgets/profile_actions.dart';
 import 'package:provider/provider.dart';
 
-class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({super.key});
+class Profilemain extends StatefulWidget {
+  const Profilemain({super.key});
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
+  State<Profilemain> createState() => _ProfilemainState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _ProfilemainState extends State<Profilemain> {
   bool _isLoading = false;
-
+  final AuthProvider authProvider = AuthProvider();
   @override
   void initState() {
     super.initState();
     _loadUserData();
   }
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
 
   Future<void> _loadUserData() async {
     setState(() => _isLoading = true);
@@ -81,6 +86,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Profile'),
+        centerTitle: true,
+        elevation: 0,
+        scrolledUnderElevation: 1,
+        actions: [
+          IconButton(
+            onPressed: _loadUserData,
+            icon: const Icon(Icons.refresh),
+            tooltip: 'Refresh profile',
+          ),
+        ],
+      ),
       body: Consumer<AuthProvider>(
         builder: (context, authProvider, child) {
           if (!authProvider.isAuth) {
@@ -99,32 +117,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
             );
           }
 
-          return CustomScrollView(
-            slivers: [
-              SliverAppBar(
-                expandedHeight: 250.0,
-                floating: false,
-                pinned: true,
-                flexibleSpace: FlexibleSpaceBar(
-                  title: Text(authProvider.user?.name ?? ''),
-                  background:
-                      ProfileHeader(user: authProvider.user!, isLoading: _isLoading),
+          return SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                if (authProvider.user != null)
+                  ProfileHeader(user: authProvider.user!, isLoading: _isLoading),
+                ProfileActions(
+                  useSliver: false,
+                  onEditProfile: () {
+                    Navigator.pushNamed(context, 'edit_profile');
+                  },
+                  onLogout: _handleLogout,
                 ),
-                actions: [
-                  IconButton(
-                    onPressed: _loadUserData,
-                    icon: const Icon(Icons.refresh),
-                    tooltip: 'Refresh profile',
-                  ),
-                ],
-              ),
-              ProfileActions(
-                onEditProfile: () {
-                  Navigator.pushNamed(context, 'edit_profile');
-                },
-                onLogout: _handleLogout,
-              ),
-            ],
+              ],
+            ),
           );
         },
       ),

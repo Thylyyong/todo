@@ -4,6 +4,7 @@ import 'package:flutter_application_1/provider/card_provider.dart';
 
 class CardScreen extends StatelessWidget {
   const CardScreen({super.key});
+  
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +12,6 @@ class CardScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Cart')),
       body: Container(
-        
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [Colors.blue.shade50, Colors.white],
@@ -21,7 +21,7 @@ class CardScreen extends StatelessWidget {
         ),
         padding: const EdgeInsets.all(16.0),
         child: cartProvider.cartItems.isEmpty
-            ? const Center(child: Text('Your cart is empty'))
+            ? const Center(child: Text('Your cart is empty', style: TextStyle(fontSize: 18)))
             : Column(
                 children: [
                   const Text('Items in your cart:'),
@@ -31,13 +31,12 @@ class CardScreen extends StatelessWidget {
                       itemBuilder: (context, index) {
                         final product = cartProvider.cartItems[index];
                         return ListTile(
-                          leading: Image.asset(product.imageUrl,
-                              width: 50),
+                          leading: Image.asset(product.imageUrl, width: 50),
                           title: Text(product.title),
                           subtitle: Text('\$${product.price}'),
                           dense: true,
                           contentPadding: const EdgeInsets.all(8.0),
-                          
+
                           trailing: IconButton(
                             icon: const Icon(Icons.remove),
                             onPressed: () {
@@ -54,7 +53,8 @@ class CardScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                            'Total: \$${cartProvider.totalPrice.toStringAsFixed(2)}'),
+                          'Total: \$${cartProvider.totalPrice.toStringAsFixed(2)}',
+                        ),
                         ElevatedButton(
                           onPressed: () {
                             Navigator.pushNamed(context, 'payment');

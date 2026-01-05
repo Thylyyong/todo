@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class PaymentProvider with ChangeNotifier{
+class PaymentProvider with ChangeNotifier {
   String cardNumber = '';
   String cvv = '';
   String expiryDate = '';

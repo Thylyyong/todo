@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_application_1/provider/product_provider.dart';
 import 'package:flutter_application_1/provider/search_provider.dart';
-import 'package:flutter_application_1/widget/product_card.dart';
+import 'package:flutter_application_1/widgets/product_card.dart';
+import 'package:flutter_application_1/screen/product_detail.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
@@ -11,13 +12,18 @@ class SearchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final productProvider = Provider.of<ProductProvider>(context);
     final searchProvider = Provider.of<SearchProvider>(context);
-    final filteredProducts = productProvider.getFilteredProducts(searchProvider.search);
+    final filteredProducts = productProvider.getFilteredProducts(
+      searchProvider.search,
+    );
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 221, 169, 214),
       appBar: AppBar(
-        title: Text('Search Results for "${searchProvider.search}"', style: TextStyle(fontSize: screenWidth * 0.045)),
+        title: Text(
+          'Search Results for "${searchProvider.search}"',
+          style: TextStyle(fontSize: screenWidth * 0.045),
+        ),
         backgroundColor: Colors.blue,
         elevation: 0,
       ),
@@ -35,10 +41,12 @@ class SearchScreen extends StatelessWidget {
               ? Center(
                   child: Text(
                     'No products found',
-                    style: TextStyle(fontSize: screenWidth * 0.045, color: Colors.grey),
+                    style: TextStyle(
+                      fontSize: screenWidth * 0.045,
+                      color: Colors.grey,
+                    ),
                   ),
                 )
-
               : Padding(
                   padding: EdgeInsets.all(screenWidth * 0.04),
                   child: GridView.builder(
@@ -52,7 +60,9 @@ class SearchScreen extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return Container(
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(screenWidth * 0.0625),
+                          borderRadius: BorderRadius.circular(
+                            screenWidth * 0.0625,
+                          ),
                           boxShadow: const [
                             BoxShadow(
                               color: Colors.black12,
@@ -62,7 +72,16 @@ class SearchScreen extends StatelessWidget {
                           ],
                         ),
                         child: ProductCard(
-                            product: filteredProducts[index]),
+                          product: filteredProducts[index],
+                          onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ProductDetailScreen(
+                                product: filteredProducts[index],
+                              ),
+                            ),
+                          ), isFavorite: true,
+                        ),
                       );
                     },
                   ),

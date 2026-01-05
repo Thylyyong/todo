@@ -12,15 +12,18 @@ class ProductProvider with ChangeNotifier {
 
   List<Product> getFilteredProducts(String query) {
     if (query.isEmpty) return _products;
-    return _products.where((product) =>
-        product.title.toLowerCase().contains(query.toLowerCase())).toList();
+    return _products
+        .where(
+          (product) =>
+              product.title.toLowerCase().contains(query.toLowerCase()),
+        )
+        .toList();
   }
 
   void toggleFavorite(String productId) {
     final productIndex = _products.indexWhere((p) => p.id == productId);
     if (productIndex != -1) {
       _products[productIndex] = Product(
-        
         id: _products[productIndex].id,
         title: _products[productIndex].title,
         price: _products[productIndex].price,

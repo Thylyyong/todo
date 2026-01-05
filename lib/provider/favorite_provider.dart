@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/product.dart';
-
 class FavoriteProvider with ChangeNotifier {
   final Set<String> _favoriteIds = {};
 
