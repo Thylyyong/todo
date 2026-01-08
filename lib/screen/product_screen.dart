@@ -16,7 +16,6 @@ class ProductScreen extends StatelessWidget {
       backgroundColor: const Color.fromARGB(255, 221, 169, 214),
       appBar: AppBar(
         title: Text('Products', style: TextStyle(fontSize: screenWidth * 0.05)),
-        backgroundColor: Colors.blue,
         elevation: 0,
       ),
       body: LayoutBuilder(

@@ -39,11 +39,13 @@ class SearchScreen extends StatelessWidget {
           }
           return filteredProducts.isEmpty
               ? Center(
-                  child: Text(
-                    'No products found',
-                    style: TextStyle(
-                      fontSize: screenWidth * 0.045,
-                      color: Colors.grey,
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text(
+                      'No products found. Tap to go back.',
+                      style: TextStyle(fontSize: screenWidth * 0.045),
                     ),
                   ),
                 )

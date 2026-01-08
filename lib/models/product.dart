@@ -6,6 +6,7 @@ class Product {
   final bool isFavorite;
   final double rate;
   final String reviews;
+  final String category;
 
   Product({
     required this.id,
@@ -15,6 +16,7 @@ class Product {
     this.isFavorite = false,
     required this.rate,
     this.reviews = '',
+    this.category = 'General',
   });
 
   factory Product.fromJson(Map<String, dynamic> json) {
@@ -26,6 +28,7 @@ class Product {
       isFavorite: json['isFavorite'],
       rate: json['rate'],
       reviews: json['reviews'] ?? '',
+      category: json['category'] ?? 'General',
     );
   }
 
@@ -38,6 +41,7 @@ class Product {
       'isFavorite': isFavorite,
       'rate': rate,
       'reviews': reviews,
+      'category': category,
     };
   }
 

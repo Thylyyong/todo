@@ -10,7 +10,19 @@ class RegisterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Register"),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.login),
+            onPressed: () {
+              Navigator.pushNamed(context, "login");
+            },
+          ),
+        ],
+      ),
+      body: Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [Colors.blue.shade50, Colors.white],
@@ -110,6 +122,7 @@ class RegisterScreen extends StatelessWidget {
           ),
         ),
       ),
-    );
+       ),
+          );
   }
 }

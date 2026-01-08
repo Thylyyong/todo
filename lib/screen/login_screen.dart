@@ -18,7 +18,21 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+         title: const Text('Login'),
+          backgroundColor: const Color(0xFF667EEA),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+      ),
+
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -143,6 +157,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             }
                           },
                           style: ElevatedButton.styleFrom(
+
                             backgroundColor: Colors.transparent,
                             shadowColor: Colors.transparent,
                             shape: RoundedRectangleBorder(
@@ -183,6 +198,6 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         ),
       ),
-    );
+     ), );
   }
 }

@@ -32,7 +32,7 @@ class AuthProvider with ChangeNotifier {
   Future<void> login(String email, String password) async {
     setLoading(true);
     _error = null;
-
+    
     try {
       await Future.delayed(const Duration(seconds: 2));
 
@@ -47,6 +47,48 @@ class AuthProvider with ChangeNotifier {
         address: '123 Main St, City, Country',
         image: 'lib/assets/images/image.png',
       );
+      _isAuth = true;
+      notifyListeners();
+    } catch (e) {
+      _error = e.toString();
+      rethrow;
+    } finally {
+      setLoading(false);
+    }
+  }
+  Future<void> signUp(User user) async {
+    setLoading(true);
+    _error = null;
+
+    try {
+      await Future.delayed(const Duration(seconds: 2));
+
+      if (user.email.isEmpty || user.password.isEmpty) {
+        throw Exception('Email and password are required');
+      }
+
+      _user = user;
+      _isAuth = true;
+      notifyListeners();
+    } catch (e) {
+      _error = e.toString();
+      rethrow;
+    } finally {
+      setLoading(false);
+    }
+  }
+  Future<void> register(User user) async {
+    setLoading(true);
+    _error = null;
+
+    try {
+      await Future.delayed(const Duration(seconds: 2));
+
+      if (user.email.isEmpty || user.password.isEmpty) {
+        throw Exception('Email and password are required');
+      }
+
+      _user = user;
       _isAuth = true;
       notifyListeners();
     } catch (e) {

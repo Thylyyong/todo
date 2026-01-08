@@ -146,7 +146,15 @@ class MyApp extends StatelessWidget {
 
   ThemeData _buildTheme(Brightness brightness) {
     var baseTheme = ThemeData(brightness: brightness, useMaterial3: true);
-    var seedColor = const Color(0xFF6750A4);
+    
+    // Modern colorful gradient seed colors
+    const primaryGradient = LinearGradient(
+      colors: [Color(0xFF667EEA), Color(0xFF764BA2), Color(0xFFf093fb)],
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+    );
+    
+    const seedColor = Color(0xFF764BA2);
 
     return baseTheme.copyWith(
       colorScheme: ColorScheme.fromSeed(
@@ -156,22 +164,22 @@ class MyApp extends StatelessWidget {
         onSurface: const Color(0xFF1C1B1F),
         surfaceVariant: const Color(0xFFE7E0EC),
         onSurfaceVariant: const Color(0xFF49454F),
-        primary: const Color(0xFF6750A4),
+        primary: const Color(0xFF764BA2),
         onPrimary: Colors.white,
-        secondary: const Color(0xFF625B71),
+        secondary: const Color(0xFF667EEA),
         onSecondary: Colors.white,
-        tertiary: const Color(0xFF7D5260),
+        tertiary: const Color(0xFFf093fb),
         onTertiary: Colors.white,
         error: const Color(0xFFB3261E),
         onError: Colors.white,
       ),
       textTheme: GoogleFonts.interTextTheme(baseTheme.textTheme),
       cardTheme: CardThemeData(
-        elevation: 4,
+        elevation: 8,
         surfaceTintColor: Colors.transparent,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-          side: BorderSide(color: Colors.grey.shade200),
+          borderRadius: BorderRadius.circular(20),
+          side: BorderSide(color: Colors.white.withOpacity(0.3)),
         ),
       ),
       appBarTheme: const AppBarTheme(
@@ -179,73 +187,83 @@ class MyApp extends StatelessWidget {
         elevation: 0,
         scrolledUnderElevation: 1,
         surfaceTintColor: Colors.transparent,
-        backgroundColor: Colors.transparent,
+        backgroundColor: Color(0xFF764BA2),
         titleTextStyle: TextStyle(
-          fontWeight: FontWeight.w600,
-          fontSize: 20,
+          fontWeight: FontWeight.w700,
+          fontSize: 22,
+          letterSpacing: -0.5,
+          color: Colors.white,
         ),
+        iconTheme: IconThemeData(color: Colors.white),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          elevation: 4,
-          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+          elevation: 6,
+          padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 32),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(16),
           ),
-          backgroundColor: const Color(0xFF6750A4),
+          backgroundColor: const Color(0xFF764BA2),
           foregroundColor: Colors.white,
+          shadowColor: const Color(0xFF764BA2).withOpacity(0.4),
         ),
       ),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
-        elevation: 6,
-        backgroundColor: Color(0xFF6750A4),
+        elevation: 8,
+        backgroundColor: Color(0xFF764BA2),
         foregroundColor: Colors.white,
+        splashColor: Color(0xFF667EEA),
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: Colors.grey[50],
+        fillColor: Colors.white.withOpacity(0.9),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: Colors.grey.shade300),
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(color: Colors.grey.shade200),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: Colors.grey.shade300),
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(color: Colors.grey.shade200),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: Color(0xFF6750A4), width: 2),
+          borderRadius: BorderRadius.circular(16),
+          borderSide: const BorderSide(color: Color(0xFF764BA2), width: 2),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(16),
           borderSide: const BorderSide(color: Color(0xFFB3261E)),
         ),
         contentPadding: const EdgeInsets.symmetric(
-          horizontal: 16,
-          vertical: 16,
+          horizontal: 20,
+          vertical: 18,
         ),
       ),
       navigationBarTheme: NavigationBarThemeData(
-        elevation: 8,
-        backgroundColor: Colors.white,
-        indicatorColor: const Color(0xFF6750A4).withOpacity(0.1),
+        elevation: 12,
+        backgroundColor: Colors.white.withOpacity(0.85),
+        indicatorColor: const Color(0xFF764BA2).withOpacity(0.15),
         labelTextStyle: MaterialStateProperty.resolveWith((states) {
           if (states.contains(MaterialState.selected)) {
             return const TextStyle(
-              color: Color(0xFF6750A4),
-              fontWeight: FontWeight.w600,
+              color: Color(0xFF764BA2),
+              fontWeight: FontWeight.w700,
+              fontSize: 12,
             );
           }
           return const TextStyle(
             color: Colors.grey,
             fontWeight: FontWeight.w500,
+            fontSize: 12,
           );
         }),
         iconTheme: MaterialStateProperty.resolveWith((states) {
           if (states.contains(MaterialState.selected)) {
-            return const IconThemeData(color: Color(0xFF6750A4));
+            return const IconThemeData(
+              color: Color(0xFF764BA2),
+              size: 26,
+            );
           }
-          return const IconThemeData(color: Colors.grey);
+          return const IconThemeData(color: Colors.grey, size: 24);
         }),
       ),
       pageTransitionsTheme: const PageTransitionsTheme(

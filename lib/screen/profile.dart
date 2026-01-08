@@ -80,8 +80,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Consumer<AuthProvider>(
+    return MaterialApp( 
+      debugShowCheckedModeBanner: false,   
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),  
+      home : Consumer<AuthProvider>(
         builder: (context, authProvider, child) {
           if (!authProvider.isAuth) {
             return Center(

@@ -17,7 +17,7 @@ class Favorite extends StatelessWidget {
           'Favorite Products',
           style: TextStyle(fontSize: screenWidth * 0.05),
         ),
-        backgroundColor: const Color.fromARGB(255, 11, 40, 65),
+        backgroundColor: const Color.fromARGB(255, 85, 93, 158),
       ),
       body: Consumer2<FavoriteProvider, ProductProvider>(
         builder: (context, favoriteProvider, productProvider, child) {
@@ -37,10 +37,11 @@ class Favorite extends StatelessWidget {
               ),
             );
           }
+
           return Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.blue.shade50, Colors.white],
+                colors: [const Color.fromARGB(255, 218, 151, 212), Colors.white],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
               ),
@@ -55,13 +56,14 @@ class Favorite extends StatelessWidget {
                 } else {
                   crossAxisCount = 2;
                 }
+
                 return GridView.builder(
-                  padding: EdgeInsets.all(screenWidth * 0.04),
+                  padding: EdgeInsets.all(screenWidth * 0.03),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: crossAxisCount,
-                    crossAxisSpacing: screenWidth * 0.04,
-                    mainAxisSpacing: screenWidth * 0.04,
-                    childAspectRatio: 0.75,
+                    crossAxisSpacing: screenWidth * 0.03,
+                    mainAxisSpacing: screenWidth * 0.03,
+                    childAspectRatio: 0.72,
                   ),
                   itemCount: favoriteProducts.length,
                   itemBuilder: (context, index) {
@@ -86,3 +88,4 @@ class Favorite extends StatelessWidget {
     );
   }
 }
+

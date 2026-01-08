@@ -66,13 +66,19 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedGradientBackground(
-      colors: const [
-        Color(0xFF667eea),
-        Color(0xFF764ba2),
-        Color(0xFFf093fb),
-        Color(0xFFf5576c),
-      ],
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            Color(0xFF667eea),
+            Color(0xFF764ba2),
+            Color(0xFFf093fb),
+            Color(0xFFf5576c),
+          ],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+      ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Center(

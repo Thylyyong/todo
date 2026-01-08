@@ -25,6 +25,7 @@ List<Product> mockProducts = [
     isFavorite: true,
     rate: 4.5,
     reviews: 'hot sale',
+  
   ),
   Product(
     id: '2',
